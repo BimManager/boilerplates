@@ -1,0 +1,33 @@
+#define DEBUG
+
+			// Get the hold of the active document
+			Document doc=this.ActiveUIDocument.Document;
+			Selection sel=this.ActiveUIDocument.Selection;
+			
+			TextWriterTraceListener fileListener=
+				new TextWriterTraceListener(File.Open(@"c:\users\kozlovk\documents\debug\SplittingWalls.txt", 
+				FileMode.OpenOrCreate));
+			
+			//Trace.Listeners.Add(fileListener);
+			Debug.Listeners.Add(fileListener);
+			
+			try
+			{
+			
+			}
+			catch(Exception ex)
+			{
+				TaskDialog.Show("Exception", string.Format("StackTrace:\n{0}\nMessage:\n{1}",
+				                                           ex.StackTrace, ex.Message));
+			}
+			finally
+			{
+				fileListener.Flush();
+				fileListener.Close();
+				Debug.Listeners.Remove(fileListener);
+				//Trace.Listeners.Remove(fileListener);
+				//Trace.Flush();
+				//Trace.Close();
+				Debug.Flush();
+				Debug.Close();
+			}
