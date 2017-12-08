@@ -1,6 +1,6 @@
 #define DEBUG
 
-                       string debugFilepath=@"c:\";
+string debugFilepath=@"c:\";
 			
 			// Get the hold of the active document
 			Document doc=this.ActiveUIDocument.Document;
@@ -41,3 +41,12 @@
 				Debug.Flush();
 				Debug.Close();
 			}
+
+[Conditional("DEBUG")]
+		static void GetListener(string filepath,
+		                        ref TextWriterTraceListener fileListener)
+		{
+			fileListener=
+				new TextWriterTraceListener(File.Open(filepath,
+				                                      FileMode.OpenOrCreate));
+		}
