@@ -1,23 +1,17 @@
 #define DEBUG
 
-string debugFilepath=@"c:\";
-			
-			// Get the hold of the active document
+     // Get the hold of the active document
 			Document doc=this.ActiveUIDocument.Document;
 			Selection sel=this.ActiveUIDocument.Selection;
 			
-			TextWriterTraceListener fileListener=null;
-			
-			GetListener(debugFilepath, ref fileListener);
-			
-			if(fileListener!=null)
-			{
-				Debug.Listeners.Add(fileListener);
-				Debug.IndentLevel=0;
-			}
+			// Create a new listener
+			EventLogTraceListener eventLogTraceListener=
+				new EventLogTraceListener("Application");
+			Debug.Listeners.Add(eventLogTraceListener);
 			
 			try
-			{	
+			{
+				Debug.WriteLine("Welcome!");
 			}
 			catch(Autodesk.Revit.Exceptions.OperationCanceledException)
 			{
@@ -32,21 +26,6 @@ string debugFilepath=@"c:\";
 			}
 			finally
 			{
-				if(fileListener!=null)
-				{
-					fileListener.Flush();
-					fileListener.Close();
-					Debug.Listeners.Remove(fileListener);
-				}
 				Debug.Flush();
 				Debug.Close();
 			}
-
-[Conditional("DEBUG")]
-		static void GetListener(string filepath,
-		                        ref TextWriterTraceListener fileListener)
-		{
-			fileListener=
-				new TextWriterTraceListener(File.Open(filepath,
-				                                      FileMode.OpenOrCreate));
-		}
