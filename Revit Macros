@@ -1,31 +1,41 @@
 #define DEBUG
 
-     // Get the hold of the active document
-			Document doc=this.ActiveUIDocument.Document;
-			Selection sel=this.ActiveUIDocument.Selection;
-			
-			// Create a new listener
-			EventLogTraceListener eventLogTraceListener=
-				new EventLogTraceListener("Application");
-			Debug.Listeners.Add(eventLogTraceListener);
-			
-			try
-			{
-				Debug.WriteLine("Welcome!");
-			}
-			catch(Autodesk.Revit.Exceptions.OperationCanceledException)
-			{
-			}
-			catch(Exception ex)
-			{
-				Debug.WriteLine(string.Format("StackTrace:\n{0}\nMessage:\n{1}",
+static EventLog log=new EventLog 
+{
+	Log="Application",
+	Source="Application"
+};
+EventLogTraceListener eventLogTraceListener=
+		new EventLogTraceListener(log);
+TraceSwitch generalSwitch=
+	new TraceSwitch("General", "Entire macro");
+
+	
+	generalSwitch.Level=TraceLevel.Verbose;
+  	// Get the hold of the active document
+	Document doc=this.ActiveUIDocument.Document;
+	Selection sel=this.ActiveUIDocument.Selection;
+	
+	// Add the EventLogTraceListener
+	Trace.Listeners.Add(eventLogTraceListener);
+
+	try
+	{
+		Trace.WriteLineIf(generalSwitch.TraceVerbose, "Hello, World!");
+	}
+	catch(Autodesk.Revit.Exceptions.OperationCanceledException)
+	{
+	}
+	catch(Exception ex)
+	{
+		Trace.WriteLineIf(generalSwitch.TraceError,string.Format("StackTrace:\n{0}\nMessage:\n{1}",
 				                              ex.StackTrace, ex.Message));
-				
-				TaskDialog.Show("Exception",string.Format("StackTrace:\n{0}\nMessage:\n{1}",
-				                                          ex.StackTrace, ex.Message));
-			}
-			finally
-			{
-				Debug.Flush();
-				Debug.Close();
-			}
+
+		TaskDialog.Show("Exception",string.Format("StackTrace:\n{0}\nMessage:\n{1}",
+							  ex.StackTrace, ex.Message));
+	}
+	finally
+	{
+		Trace.Flush();
+		Trace.Close();
+	}
