@@ -1,0 +1,29 @@
+// Add an EventLogTraceListener object
+Trace.Listeners.Add(new EventLogTraceListener("Application"));
+
+// Lay the hands on the active document
+UIDocument uidoc = commandData.Application.ActiveUIDocument;
+Document doc = uidoc.Document;
+
+// set up a timer
+Timing myTimer = new Timing();
+myTimer.StartTime();
+try {
+  
+  return Result.Succeeded;
+}
+catch (Autodesk.Revit.Exceptions.OperationCanceledException) {
+  return Result.Cancelled;
+}
+catch (Exception ex) {
+  TaskDialog.Show("Exception",
+    string.Format("{0}\n{1}", ex.Message, ex.StackTrace));
+  Trace.Write(string.Format("{0}\n{1}", 
+    ex.Message, ex.StackTrace));
+    return Result.Failed;
+}
+finally {
+  myTimer.StopTime();
+  Trace.Write(string.Format("Time elapsed: {0}s", 
+    myTimer.Duration.TotalSeconds));
+}
