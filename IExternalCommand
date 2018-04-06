@@ -6,7 +6,7 @@ System.Diagnostics.Trace.Listeners.Add(
 UIDocument uidoc = commandData.Application.ActiveUIDocument;
 Document doc = uidoc.Document;
 
-// set up a timer
+// Set up a timer
 Timing myTimer = new Timing();
 myTimer.StartTime();
 try {
