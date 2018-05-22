@@ -1,3 +1,7 @@
+[Autodesk.Revit.Attributes.Journaling(Autodesk.Revit.Attributes.JournalingMode.NoCommandData)]
+[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+[Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
+ 
  // Add an EventLogTraceListener object
 System.Diagnostics.Trace.Listeners.Add(
    new System.Diagnostics.EventLogTraceListener("Application"));
