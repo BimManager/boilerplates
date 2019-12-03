@@ -24,6 +24,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	@echo $(SRCS)
 	@echo $(OBJS)
+	mkdir $(BINDIR)
 	$(LD) $(LDFLAGS) $^ -o $(BINDIR)/$@
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c
@@ -36,6 +37,6 @@ clean :
 	@rm -rf $(OBJDIR)
 
 fclean : clean
-	@rm -rf $(BINDIR)/$(NAME)
+	@rm -rf $(BINDIR)
 
 re : fclean all
