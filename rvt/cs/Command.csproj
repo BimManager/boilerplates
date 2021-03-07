@@ -1,0 +1,19 @@
+<!-- msbuild .\Command.csproj -t:Build,Install -->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Include="Command.cs" />
+    <Reference Include="C:\Program Files\Autodesk\Revit 2020\RevitAPI.dll" />
+    <Reference Include="C:\Program Files\Autodesk\Revit 2020\RevitAPIUI.dll" />
+    <Files Include="Command.dll; Command.addin" />
+  </ItemGroup>
+  
+  <Target Name="Build">
+    <Csc Sources="@(Compile)" References="@(Reference)" TargetType="library"/>
+  </Target>
+  
+  <Target Name="Install">
+    <Copy SourceFiles="@(Files)" DestinationFolder="C:\Users\kkozlov\AppData\Roaming\Autodesk\Revit\Addins\2020"
+          OverWriteReadOnlyFiles="true" />
+  </Target>
+</Project>
