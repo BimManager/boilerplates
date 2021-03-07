@@ -2,7 +2,7 @@
 <RevitAddIns>
     <AddIn Type="Command">
         <Text>External Command Template</Text>
-        <Assembly>cmd.dll</Assembly>
+        <Assembly>Command.dll</Assembly>
         <AddInId>239BD853-36E4-461f-9172-C5ACEDA3E721</AddInId>
         <FullClassName>Kkozlov.Command</FullClassName>
 	    <Description>External Command Template</Description>
