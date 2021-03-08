@@ -1,6 +1,13 @@
 <!-- msbuild .\Command.csproj -t:Build,Install -->
 
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
   <PropertyGroup>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
@@ -20,4 +27,6 @@
     <Copy SourceFiles="@(Files)" DestinationFolder="C:\Users\kkozlov\AppData\Roaming\Autodesk\Revit\Addins\2020"
           OverWriteReadOnlyFiles="true" />
   </Target>
+
+
 </Project>

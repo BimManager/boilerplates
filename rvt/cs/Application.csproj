@@ -1,0 +1,21 @@
+<Project>
+  <PropertyGroup>
+    <RevitPath>$(Programw6432)\Autodesk\Revit 2020</RevitPath>
+    <RevitAddins>C:\Users\kkozlov\AppData\Roaming\Autodesk\Revit\Addins\2020</RevitAddins>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Reference Include="$(RevitPath)\RevitAPI.dll" />
+    <Reference Include="$(RevitPath)\RevitAPIUI.dll" />
+
+    <AddinFiles Include="Application.addin;Application.dll;Application.dll.config" />
+    <AddinsDir Include="C:\Users\kkozlov\AppData\Roaming\Autodesk\Revit\Addins\2020" />
+  </ItemGroup>
+  
+  <Target Name="Build">
+    <Csc TargetType="library" References="@(Reference)" Sources="Application.cs" />
+  </Target>
+  <Target Name="Install">
+    <Copy SourceFiles="@(AddinFiles)" DestinationFolder="@(AddinsDir)" />
+  </Target>
+</Project>
