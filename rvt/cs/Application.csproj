@@ -5,6 +5,8 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <Reference Include="System.Xml.XDocument.dll" />
+    
     <Reference Include="$(RevitPath)\RevitAPI.dll" />
     <Reference Include="$(RevitPath)\RevitAPIUI.dll" />
 
@@ -14,6 +16,10 @@
   
   <Target Name="Build">
     <Csc TargetType="library" References="@(Reference)" Sources="Application.cs" />
+  </Target>
+  <Target Name="BuildAddInManifestBuilder">
+    <Csc TargetType="exe" Sources="AddInManifestBuilder.cs" References="@(Reference)"
+             OutputAssembly="AddInManifestBuilder.exe" />
   </Target>
   <Target Name="Install">
     <Copy SourceFiles="@(AddinFiles)" DestinationFolder="@(AddinsDir)" />
