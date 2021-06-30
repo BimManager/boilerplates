@@ -1,0 +1,25 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+<!--    <PackageReference Include="System.Data.SQLite.Core" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.dll"/>
+  </ItemGroup>
+  
+  <ItemGroup>
+<!--    <Reference Include="System.Data.SQLite.dll">
+      <HintPath>.\Stub.System.Data.SQLite.Core.NetFramework.1.0.114.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>-->
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
