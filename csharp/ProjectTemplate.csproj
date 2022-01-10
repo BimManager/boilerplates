@@ -1,20 +1,40 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>AssemblyName</AssemblyName>
+    <OutputPath>bin\Debug</OutputPath>
+   <!-- <OutputType>Library</OutputType>-->
+   <PlatformTarget>x64</PlatformTarget>
+   <DebugSymbols>True</DebugSymbols>
+   <DebugType>Full</DebugType>
+   <Optimize>False</Optimize>
+   <WarningLevel>4</WarningLevel>
+<!--   <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+   <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>-->
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- msbuild -t:restore -->
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 <!--    <PackageReference Include="System.Data.SQLite.Core" />-->
+
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="System.dll"/>
+    <Reference Include="System"/>
   </ItemGroup>
   
   <ItemGroup>
 <!--    <Reference Include="System.Data.SQLite.dll">
       <HintPath>.\Stub.System.Data.SQLite.Core.NetFramework.1.0.114.0\lib\net46\System.Data.SQLite.dll</HintPath>
+      <Private>False</Private> to avoid copying the referenced assembly
     </Reference>-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   
   <ItemGroup>
