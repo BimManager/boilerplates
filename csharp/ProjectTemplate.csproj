@@ -15,11 +15,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- msbuild -t:restore -->
-    <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-<!--    <PackageReference Include="System.Data.SQLite.Core" />-->
+    <!--<ProjectReference Include="../src/ProjectName.csproj" />-->
+  </ItemGroup>
 
+  <ItemGroup>
+    <!-- msbuild -t:restore -->
+<!--    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Data.SQLite.Core" />-->
   </ItemGroup>
 
   <ItemGroup>
