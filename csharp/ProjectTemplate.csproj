@@ -2,9 +2,9 @@
   <PropertyGroup>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <OutputType>Exe</OutputType>
+    <!-- <OutputType>Library</OutputType>-->
     <AssemblyName>AssemblyName</AssemblyName>
     <OutputPath>bin\Debug</OutputPath>
-   <!-- <OutputType>Library</OutputType>-->
    <PlatformTarget>x64</PlatformTarget>
    <DebugSymbols>True</DebugSymbols>
    <DebugType>Full</DebugType>
@@ -22,7 +22,11 @@
     <!-- msbuild -t:restore -->
 <!--    <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.Data.SQLite.Core" />-->
+    <PackageReference Include="System.Data.SQLite.Core" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2020.0.0">
+      <IncludeAssets>runtime;compile</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>-->
   </ItemGroup>
 
   <ItemGroup>
