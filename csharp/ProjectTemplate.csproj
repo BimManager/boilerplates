@@ -18,10 +18,11 @@
     <!--<ProjectReference Include="../src/ProjectName.csproj" />-->
   </ItemGroup>
 
-  <ItemGroup>
-    <!-- msbuild -t:restore -->
-<!--    <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  <ItemGroup> <!-- msbuild -t:restore -->
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit.ConsoleRunner" Version="3.15.0"
+                      GeneratePathProperty="true" />
+<!--    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Data.SQLite.Core" />
     <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2020.0.0">
       <IncludeAssets>runtime;compile</IncludeAssets>
@@ -47,6 +48,10 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
   </ItemGroup>
+
+  <Target Name="RunTests" AfterTargets="Build">
+    <Exec Command="$(PkgNUnit_ConsoleRunner)\tools\nunit3-console.exe $(OutputPath)$(AssemblyName).dll" />
+  </Target>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
