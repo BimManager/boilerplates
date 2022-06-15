@@ -37,6 +37,19 @@
   <Target Name="RunTests" AfterTargets="Build" >
     <Exec Command="$(PkgNUnit_ConsoleRunner)\tools\nunit3-console.exe $(OutputPath)$(AssemblyName).dll" />
   </Target>
+
+  <ItemGroup>
+    <Logs Include="$(ProjectDir)*.log" />
+    <TestResult Include="$(ProjectDir)TestResult.xml" />
+  </ItemGroup>
+
+  <Target Name="DeleteResult" AfterTargets="Build">
+    <Delete Files="@(TestResult)" />
+  </Target>
+
+  <Target Name="DeleteLogs" AfterTargets="Build">
+    <Delete Files="@(Logs)" />
+  </Target>
   
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.targets" />
 </Project>
