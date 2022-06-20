@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <OutputType>Library</OutputType>
-    <AssemblyName>Template.UnitTests</AssemblyName>
+    <AssemblyName>[Template].UnitTests</AssemblyName>
     <OutputPath>bin\Debug</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>True</DebugSymbols>
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../src/Template.fsproj" />
+    <ProjectReference Include="../src/[Template].fsproj" />
   </ItemGroup>
   
   <ItemGroup>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Ex00Tests.fs" />
+    <Compile Include="[Template]Tests.fs" />
   </ItemGroup>
 
   <Target Name="ShowMessage">
